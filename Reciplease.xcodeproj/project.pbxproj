@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5A15688425138A6C0086EB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15688325138A6C0086EB19 /* AppDelegate.swift */; };
-		5A15688625138A6C0086EB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15688525138A6C0086EB19 /* SceneDelegate.swift */; };
 		5A15688825138A6C0086EB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15688725138A6C0086EB19 /* ViewController.swift */; };
 		5A15688B25138A6C0086EB19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A15688925138A6C0086EB19 /* Main.storyboard */; };
 		5A15688E25138A6C0086EB19 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A15688C25138A6C0086EB19 /* Reciplease.xcdatamodeld */; };
@@ -38,13 +37,12 @@
 /* Begin PBXFileReference section */
 		5A15688025138A6C0086EB19 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A15688325138A6C0086EB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A15688525138A6C0086EB19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5A15688725138A6C0086EB19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5A15688A25138A6C0086EB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A15688D25138A6C0086EB19 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		5A15688F25138A700086EB19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A15689225138A700086EB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5A15689425138A700086EB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A15689425138A700086EB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Reciplease/Other Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		5A15689925138A700086EB19 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A15689D25138A700086EB19 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		5A15689F25138A700086EB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,14 +99,10 @@
 		5A15688225138A6C0086EB19 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
-				5A15688325138A6C0086EB19 /* AppDelegate.swift */,
-				5A15688525138A6C0086EB19 /* SceneDelegate.swift */,
-				5A15688725138A6C0086EB19 /* ViewController.swift */,
-				5A15688925138A6C0086EB19 /* Main.storyboard */,
-				5A15688F25138A700086EB19 /* Assets.xcassets */,
-				5A15689125138A700086EB19 /* LaunchScreen.storyboard */,
-				5A15689425138A700086EB19 /* Info.plist */,
-				5A15688C25138A6C0086EB19 /* Reciplease.xcdatamodeld */,
+				5A1568B925138A900086EB19 /* Other Files */,
+				5A1568B825138A890086EB19 /* Model */,
+				5A1568B725138A820086EB19 /* View */,
+				5A1568B625138A780086EB19 /* Controller */,
 			);
 			path = Reciplease;
 			sourceTree = "<group>";
@@ -129,6 +123,41 @@
 				5A1568AA25138A700086EB19 /* Info.plist */,
 			);
 			path = RecipleaseUITests;
+			sourceTree = "<group>";
+		};
+		5A1568B625138A780086EB19 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5A15688725138A6C0086EB19 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5A1568B725138A820086EB19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A15689125138A700086EB19 /* LaunchScreen.storyboard */,
+				5A15688925138A6C0086EB19 /* Main.storyboard */,
+				5A15688F25138A700086EB19 /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A1568B825138A890086EB19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A15688C25138A6C0086EB19 /* Reciplease.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5A1568B925138A900086EB19 /* Other Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A15688325138A6C0086EB19 /* AppDelegate.swift */,
+				5A15689425138A700086EB19 /* Info.plist */,
+			);
+			path = "Other Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +294,6 @@
 				5A15688E25138A6C0086EB19 /* Reciplease.xcdatamodeld in Sources */,
 				5A15688825138A6C0086EB19 /* ViewController.swift in Sources */,
 				5A15688425138A6C0086EB19 /* AppDelegate.swift in Sources */,
-				5A15688625138A6C0086EB19 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJPLMV5UNX;
-				INFOPLIST_FILE = Reciplease/Info.plist;
+				INFOPLIST_FILE = "Reciplease/Other Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJPLMV5UNX;
-				INFOPLIST_FILE = Reciplease/Info.plist;
+				INFOPLIST_FILE = "Reciplease/Other Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
