@@ -17,6 +17,9 @@
 		5A1568A925138A700086EB19 /* RecipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1568A825138A700086EB19 /* RecipleaseUITests.swift */; };
 		5A595EDD25149EA800D1C3F1 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EDC25149EA800D1C3F1 /* Recipes.swift */; };
 		5A595EDF25149F4500D1C3F1 /* RecipesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */; };
+		5A595EE32514A2F100D1C3F1 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */; };
+		5A595EE52514A35900D1C3F1 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EE42514A35900D1C3F1 /* URLSessionFake.swift */; };
+		5A595EE92514A7F900D1C3F1 /* Recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A595EE82514A7F800D1C3F1 /* Recipes.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		5A1568AA25138A700086EB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A595EDC25149EA800D1C3F1 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesServices.swift; sourceTree = "<group>"; };
+		5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
+		5A595EE42514A35900D1C3F1 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		5A595EE82514A7F800D1C3F1 /* Recipes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Recipes.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,9 @@
 			children = (
 				5A15689D25138A700086EB19 /* RecipleaseTests.swift */,
 				5A15689F25138A700086EB19 /* Info.plist */,
+				5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */,
+				5A595EE42514A35900D1C3F1 /* URLSessionFake.swift */,
+				5A595EE82514A7F800D1C3F1 /* Recipes.json */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -280,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A595EE92514A7F900D1C3F1 /* Recipes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +320,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A15689E25138A700086EB19 /* RecipleaseTests.swift in Sources */,
+				5A595EE52514A35900D1C3F1 /* URLSessionFake.swift in Sources */,
+				5A595EE32514A2F100D1C3F1 /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
