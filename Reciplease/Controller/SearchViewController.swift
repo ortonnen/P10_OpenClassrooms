@@ -29,10 +29,11 @@ class SearchViewController: UIViewController {
     }
 
     private func addIngredient(for ingredient: String) {
-        ingredients.insert(ingredient, at: 0)
+        ingredients.append(ingredient)
         ingredientListeTableView.reloadData()
     }
 }
+
 extension SearchViewController: UITableViewDelegate {
 
 }

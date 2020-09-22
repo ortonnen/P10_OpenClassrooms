@@ -11,7 +11,7 @@ import Foundation
 class RecipesServices {
 
     //MARK: Properties
-
+    
     private let recipesURL = URL(string: "https://api.edamam.com/search?")!
 
     private var recipesSession = URLSession(configuration: .default)
@@ -33,27 +33,25 @@ class RecipesServices {
 
     func getRecipes(with ingredients: String, callback: @escaping (Bool, Recipes?) -> Void) {
         let request = createRecipesRequest(with: ingredients)
+        guard let urlRequest = request.url else { return }
+
         task?.cancel()
-        task = recipesSession.dataTask(with: request.url!) { (data, response, error) in
+        task = recipesSession.dataTask(with: urlRequest) { (data, response, error) in
             DispatchQueue.main.async {
 
                 guard let data = data, error == nil else {
                     callback(false, nil)
                     return
                 }
-
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     callback(false, nil)
                     return
                 }
-
                 guard let recipes = try? JSONDecoder().decode(Recipes.self, from: data) else {
                     callback(false, nil)
                     return
                 }
-
                 callback(true, recipes)
-
             }
         }
         task?.resume()

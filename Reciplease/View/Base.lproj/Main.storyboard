@@ -37,35 +37,6 @@
             </objects>
             <point key="canvasLocation" x="460" y="378"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="tyh-cS-yss">
-            <objects>
-                <tableViewController id="5g7-Tr-Vbz" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UgP-TT-3rh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3uW-f1-ns1">
-                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3uW-f1-ns1" id="gyD-PV-vLs">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5g7-Tr-Vbz" id="8hj-tA-TG4"/>
-                            <outlet property="delegate" destination="5g7-Tr-Vbz" id="Dqr-ur-rMQ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="yYd-BZ-UEG"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qgA-qE-4gN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2173" y="-332"/>
-        </scene>
         <!--Search-->
         <scene sceneID="7KP-9x-5ua">
             <objects>
@@ -74,12 +45,15 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Reciplease" id="mTd-P9-eTc">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="OQL-FY-IHU"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="OQL-FY-IHU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </navigationItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NJS-MT-PWI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.21302333470000001" green="0.2005681694" blue="0.19673749800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.21302333470000001" green="0.2005681694" blue="0.19673749800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="21"/>
@@ -97,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="459" y="-331"/>
         </scene>
-        <!--Reciplease-->
+        <!--SearchView-->
         <scene sceneID="GDZ-3p-11f">
             <objects>
-                <viewController id="8n6-De-DZN" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SearchView" id="8n6-De-DZN" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LJe-yf-et9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +89,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5g7-Tr-Vbz" kind="show" id="A3e-PS-5WJ"/>
+                                    <segue destination="NdO-DL-GOS" kind="show" id="jIA-Qk-Q0A"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZb-t7-Gms">
@@ -225,6 +199,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9T-1X-3Ix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297.5" y="-333.80281690140845"/>
+        </scene>
+        <!--RecipesView-->
+        <scene sceneID="Bs1-Ck-8mB">
+            <objects>
+                <viewController title="RecipesView" id="NdO-DL-GOS" customClass="RecipesViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2At-i9-VLD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZqE-1H-0kb">
+                                <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" id="PZa-MK-NiQ">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PZa-MK-NiQ" id="wM4-xa-nIl">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="NdO-DL-GOS" id="Qq4-yR-IMa"/>
+                                    <outlet property="delegate" destination="NdO-DL-GOS" id="DJX-6d-ORX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="y8k-kU-q2r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZqE-1H-0kb" firstAttribute="bottom" secondItem="y8k-kU-q2r" secondAttribute="bottom" id="9bW-Bb-D5H"/>
+                            <constraint firstItem="ZqE-1H-0kb" firstAttribute="top" secondItem="y8k-kU-q2r" secondAttribute="top" id="A8c-WK-NLI"/>
+                            <constraint firstItem="ZqE-1H-0kb" firstAttribute="leading" secondItem="y8k-kU-q2r" secondAttribute="leading" id="Hkb-Ls-kaI"/>
+                            <constraint firstItem="ZqE-1H-0kb" firstAttribute="trailing" secondItem="y8k-kU-q2r" secondAttribute="trailing" id="aK5-HJ-D7W"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reciplease" id="NO3-5T-q6j"/>
+                    <connections>
+                        <outlet property="recipeTableView" destination="ZqE-1H-0kb" id="XyQ-3i-FWJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="11p-As-aVS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2048" y="-334"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="i4T-lX-iPt">
