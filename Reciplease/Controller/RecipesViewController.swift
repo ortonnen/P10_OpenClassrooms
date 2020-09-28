@@ -10,7 +10,7 @@ import UIKit
 
 class RecipesViewController: UIViewController {
 
-    var searchRecipe = SearchViewController()
+    var ingredients: [String] = []
 
     @IBOutlet weak var recipeTableView: UITableView!
 
@@ -19,6 +19,7 @@ class RecipesViewController: UIViewController {
         recipeTableView.dataSource = self
         // Do any additional setup after loading the view.
         recipeTableView.reloadData()
+        print("view\(ingredients)")
     }
 }
 
@@ -28,18 +29,19 @@ extension RecipesViewController: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-//        return searchRecipe.ingredients.count
+        return ingredients.count
+
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-//        let ingredient = searchRecipe.ingredients[indexPath.row]
+        let ingredient = ingredients[indexPath.row]
 
-        cell.textLabel?.text = "ingredient"
+        cell.textLabel?.text = ingredient
 
 
         return cell
     }
+
 }

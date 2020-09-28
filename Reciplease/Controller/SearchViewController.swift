@@ -22,10 +22,25 @@ class SearchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let recipesVC = segue.destination as? RecipesViewController else {
+            return
+        }
+        recipesVC.ingredients = ingredients
+    }
+
     @IBAction func tappedAddIngredientButton() {
-        guard ingredientTextField.text != nil else { return }
+        guard ingredientTextField.text != nil, ingredientTextField.text != "" else {
+            textIsEmptyAlerte()
+            return }
         addIngredient(for: ingredientTextField.text ?? "")
         ingredientTextField.text = ""
+    }
+
+    @IBAction func tappedClearButton(_ sender: Any) {
+        ingredients.removeAll()
+        ingredientTextField.text = ""
+        ingredientListeTableView.reloadData()
     }
 
     private func addIngredient(for ingredient: String) {
@@ -54,6 +69,18 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
 }
+
+//MARK: Alerte
+extension SearchViewController {
+
+    private func textIsEmptyAlerte() {
+        let alerte = UIAlertController(title: "Empty Ingredient Field", message: "please enter an ingredient ", preferredStyle: .alert)
+        let alerteAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alerte.addAction(alerteAction)
+        self.present(alerte, animated: true, completion: nil)
+    }
+}
+
 //MARK: Keyboard
 extension SearchViewController {
 
