@@ -1,7 +1,9 @@
-platform :ios, '8.0'
+platform :ios, '11.0'
 
 use_frameworks!
 
-target "CocoaPodsProject" do
-  pod 'Alamofire', '~> 3'
+pod 'Alamofire', '4.9.1'
+
+target "Reciplease" do
+ 
 end
