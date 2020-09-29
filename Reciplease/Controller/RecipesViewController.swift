@@ -35,10 +35,12 @@ extension RecipesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as? RecipesTableViewCell else {
+            return UITableViewCell()
+        }
         let ingredient = ingredients[indexPath.row]
 
-        cell.textLabel?.text = ingredient
+        cell.configure(withTitle: ingredient, subTitle: ingredient, like: 14, timing: 30)
 
 
         return cell
