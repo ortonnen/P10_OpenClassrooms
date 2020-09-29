@@ -11,6 +11,7 @@ import UIKit
 class RecipesViewController: UIViewController {
 
     var ingredients: [String] = []
+    var recipeServices = RecipesServices()
 
     @IBOutlet weak var recipeTableView: UITableView!
 
@@ -19,6 +20,19 @@ class RecipesViewController: UIViewController {
         recipeTableView.dataSource = self
         // Do any additional setup after loading the view.
         recipeTableView.reloadData()
+        recipeServices.getRecipes(with: ingredients) { (success, recipes) in
+            DispatchQueue.main.async {
+                guard success else {
+                    print("error success")
+                    return
+                }
+                guard recipes != nil else {
+                    print("error recipes")
+                    return
+                }
+                print ("call is ok")
+            }
+        }
         print("view\(ingredients)")
     }
 }
