@@ -2,7 +2,8 @@ platform :ios, '11.0'
 
 use_frameworks!
 
-pod 'Alamofire', '4.9.1'
+pod 'Alamofire', '5.0.1'
+pod 'AlamofireImage', '4.0.0'
 
 target "Reciplease" do
  
