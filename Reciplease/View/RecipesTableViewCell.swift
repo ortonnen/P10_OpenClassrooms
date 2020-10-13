@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class RecipesTableViewCell: UITableViewCell {
     
@@ -30,6 +31,12 @@ class RecipesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        recipeImageView.af.cancelImageRequest()
+        recipeImageView.image = nil
+    }
+    
     private func addShadow() {
         timeLabel.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
         titleLabel.layer.shadowRadius = 2.0
@@ -42,11 +49,13 @@ class RecipesTableViewCell: UITableViewCell {
         subTitleLabel.layer.shadowOpacity = 2.0
     }
 
-    func configure(withTitle title: String, subTitle: String, like: Int, timing: Int) {
-//        let image: Data
-//        recipeImageView.image = UIImage.init(data: image)
+    func configure(withTitle title: String, subTitle: [String], like: Int, timing: Int, imageUrl: String) {
+
+        guard let url = URL(string:imageUrl) else { return }
+
+        recipeImageView.af.setImage(withURL: url)
         titleLabel.text = title
-        subTitleLabel.text = subTitle
+        subTitleLabel.text = subTitle.joined(separator: ", ")
         likeLabel.text = String(like)
         timeLabel.text = String(timing)
     }
