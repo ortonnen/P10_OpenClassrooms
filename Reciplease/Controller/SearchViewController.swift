@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SearchViewController: UIViewController {
 
     var ingredients: [String] = []
@@ -17,12 +18,15 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         ingredientListeTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard ingredients.count > 0 else {
+            textIsEmptyAlerte()
+            return
+        }
         guard let recipesVC = segue.destination as? RecipesViewController else {
             return
         }
@@ -30,7 +34,7 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func tappedAddIngredientButton() {
-        guard ingredientTextField.text != nil, ingredientTextField.text != "" else {
+        guard let text = ingredientTextField.text, !text.isEmpty else {
             textIsEmptyAlerte()
             return }
         addIngredient(for: ingredientTextField.text ?? "")
