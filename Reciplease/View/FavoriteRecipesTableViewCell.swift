@@ -45,13 +45,13 @@ class FavoriteRecipesTableViewCell: UITableViewCell {
         subtitleLabel.layer.shadowOpacity = 2.0
     }
 
-    func configure(withTitle title: String, subTitle: [String], imageUrl: String) {
+    func configure(withTitle title: String, subTitle: String, imageUrl: String) {
 
         guard let url = URL(string:imageUrl) else { return }
 
         recipeImageView.af.setImage(withURL: url)
         titleLabel.text = title
-        subtitleLabel.text = subTitle.joined(separator: ", ")
+        subtitleLabel.text = subTitle
     }
 
 }

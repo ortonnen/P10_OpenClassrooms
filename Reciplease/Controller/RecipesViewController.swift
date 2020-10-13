@@ -76,8 +76,6 @@ extension RecipesViewController: UITableViewDataSource {
 
             cell.configure(withTitle: recipesHit[indexPath.row].recipe.label, subTitle: ingredients, like: recipesHit[indexPath.row].recipe.yield, timing: recipesHit[indexPath.row].recipe.totalTime, imageUrl: recipesHit[indexPath.row].recipe.image)
 
-            print(recipesHit[indexPath.row].recipe.url)
-
             return cell
         } else {
             cell.configure(withTitle: "No recipe", subTitle: [""], like: 0, timing: 0, imageUrl:"")

@@ -12,9 +12,9 @@ import AlamofireImage
 class RecipeDetailViewController: UIViewController {
 
     var currentRecipe: Recipe!
-    var recipeDetail = RecipeDetail()
     var favoriteRecipe = FavoriteRecipe()
-    var recipesIsFvorite = false
+    var isFavorite = false
+
 
 
     @IBOutlet weak var recipeImage: UIImageView!
@@ -36,15 +36,15 @@ class RecipeDetailViewController: UIViewController {
     }
 
     @IBAction func tappedAddRecipeToFavorite(_ sender: Any) {
-        if recipesIsFvorite == false {
+        if isFavorite == false {
             favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
-            recipesIsFvorite = true
+            isFavorite = true
+            favoriteRecipe.addFavoriteRecipe(for: currentRecipe, favorite: isFavorite)
         } else {
             favoriteButton.image = #imageLiteral(resourceName: "favorite.png")
-            recipesIsFvorite = false
+            isFavorite = false
         }
     }
-
 }
 
 
