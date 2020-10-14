@@ -30,26 +30,25 @@ class RecipesServices {
 
         guard let url = URL(string: "\(recipesURL)&q=\(ingredient)))&app_id=\(apiId)&app_key=\(apikey)") else { return }
 
-       AF.request(url).responseJSON { (dataResponse) in
-            guard dataResponse.error == nil else {
-                callback(.failure(.error))
-                return
-            }
-            guard dataResponse.response?.statusCode == 200 else {
-                    callback(.failure(.statusCodeError))
+        AF.request(url)
+            .validate(statusCode: 200 ..< 400)
+            .responseJSON { (dataResponse) in
+
+                guard dataResponse.error == nil else {
+                    callback(.failure(.error))
                     return
                 }
-            guard dataResponse.data != nil else {
-                callback(.failure(.noData))
-                return
+                guard dataResponse.data != nil else {
+                    callback(.failure(.noData))
+                    return
+                }
+                do {
+                    let responseJSON = try JSONDecoder().decode(Recipes.self, from: dataResponse.data!)
+                    callback(.success(responseJSON))
+                } catch {
+                    callback(.failure(.decodeDataError))
+                }
             }
-            do {
-                let responseJSON = try JSONDecoder().decode(Recipes.self, from: dataResponse.data!)
-                callback(.success(responseJSON))
-            } catch {
-                callback(.failure(.decodeDataError))
-            }
-        }
     }
 }
 
