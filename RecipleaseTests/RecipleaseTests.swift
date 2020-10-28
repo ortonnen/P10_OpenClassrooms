@@ -7,71 +7,61 @@
 //
 
 import XCTest
+import Alamofire
 @testable import Reciplease
 
 class RecipleaseTests: XCTestCase {
 
     //MARK: RecipesServiceTest
 
-    func testGetTranslationShouldPostFailedCallback() {
+    func testGetRecipeShouldPostFailedCallback() {
 
-        let recipesService = RecipesServices(
-            recipesSession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+        let session = AlamofireSessionFake(fakeResponse: FakeResponse(response: nil, data: nil))
+        let recipeService = RecipesServices(session: session)
 
         let expectation = XCTestExpectation(description: "Wait for queue change.")
 
-        recipesService.getRecipes(with: "chicken") { (success, recipes) in
+        recipeService.getRecipes(with: ["lemon"]) { (result) in
 
-            XCTAssertFalse(success)
-            XCTAssertNil(recipes)
+            guard case .failure(let error) = result else {
+                XCTFail("test GetRecipe Should Post Failed Callback failed")
+                return
+            }
+            expectation.fulfill()
+            XCTAssertNotNil(error)
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetRecipeShouldPostFailedCallbackIfNoData() {
+
+        let session = AlamofireSessionFake(fakeResponse: FakeResponse(response: FakeResponseData.responseOK, data: FakeResponseData.incorrectData))
+        let recipeService = RecipesServices(session: session)
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+
+        recipeService.getRecipes(with: ["lemon"]) { result in
+            guard case .failure(let error) = result else {
+                XCTFail("test GetRecipe Should Post Failed Callback If No Data failed.")
+                return
+            }
+            XCTAssertNotNil(error)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func testGetTranslateShouldPostFailedCallbackIfNoData() {
+    func testGetRecipeShouldPostFailedCallbackIfIncorrectResponse() {
 
-        let recipesService = RecipesServices(
-            recipesSession: URLSessionFake(data: nil, response: nil, error: nil))
-
+        let session = AlamofireSessionFake(fakeResponse: FakeResponse(response: FakeResponseData.responseKO, data: FakeResponseData.recipesCorrectData))
+        let recipeService = RecipesServices(session: session)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
 
-        recipesService.getRecipes(with: "chicken") { (success, recipes) in
-
-            XCTAssertFalse(success)
-            XCTAssertNil(recipes)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-
-    func testGetTranslateShouldPostFailedCallbackIfIncorrectResponse() {
-
-        let recipesService = RecipesServices(
-            recipesSession: URLSessionFake(data: FakeResponseData.recipesCorrectData, response: FakeResponseData.responseKO, error: nil))
-
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-
-        recipesService.getRecipes(with: "chicken") { (success, recipes) in
-
-            XCTAssertFalse(success)
-            XCTAssertNil(recipes)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-
-    func testGetTranslateShouldPostFailedCallbackIfIncorrectData() {
-
-        let recipesService = RecipesServices(
-            recipesSession: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil))
-
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-
-        recipesService.getRecipes(with: "chicken") { (success, recipes) in
-
-            XCTAssertFalse(success)
-            XCTAssertNil(recipes)
+        recipeService.getRecipes(with: ["lemon"]) { result in
+            guard case .failure(let error) = result else {
+                XCTFail("test GetRecipe Should Post Failed Callback If Incorrect Response failed")
+                return
+            }
+            XCTAssertNotNil(error)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -79,18 +69,17 @@ class RecipleaseTests: XCTestCase {
 
     func testGetTranslateShouldPostSuccessCallBackIfNoErrorAndCorrectData() {
 
-        let recipesService = RecipesServices(
-            recipesSession: URLSessionFake(data: FakeResponseData.recipesCorrectData, response: FakeResponseData.responseOK, error: nil))
-
+        let session = AlamofireSessionFake(fakeResponse: FakeResponse(response: FakeResponseData.responseOK, data: FakeResponseData.recipesCorrectData))
+        let recipeService = RecipesServices(session: session)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-
-        recipesService.getRecipes(with: "chicken") { (success, recipes) in
-
-            XCTAssertTrue(success)
-            XCTAssertNotNil(recipes)
+        recipeService.getRecipes(with: ["Lemon"]) { result in
+            guard case .success(let data) = result else {
+                XCTFail("Test getData method with undecodable data failed.")
+                return
+            }
+            XCTAssertTrue(data.hits[0].recipe.label == "Lemon Confit")
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 10)
     }
-
 }

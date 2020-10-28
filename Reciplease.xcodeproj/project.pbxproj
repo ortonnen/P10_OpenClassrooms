@@ -15,12 +15,13 @@
 		5A15689325138A700086EB19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A15689125138A700086EB19 /* LaunchScreen.storyboard */; };
 		5A15689E25138A700086EB19 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15689D25138A700086EB19 /* RecipleaseTests.swift */; };
 		5A1568A925138A700086EB19 /* RecipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1568A825138A700086EB19 /* RecipleaseUITests.swift */; };
+		5A445AD72549A40B00141EAF /* RecipesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A445AD62549A40B00141EAF /* RecipesSession.swift */; };
+		5A445ADF2549A42D00141EAF /* AlamofireSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A445ADE2549A42C00141EAF /* AlamofireSessionFake.swift */; };
 		5A5023E4253040990061DE1C /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5023E3253040990061DE1C /* RecipeDetailViewController.swift */; };
 		5A5023E9253045AE0061DE1C /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5023E8253045AE0061DE1C /* RecipeDetail.swift */; };
 		5A595EDD25149EA800D1C3F1 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EDC25149EA800D1C3F1 /* Recipes.swift */; };
 		5A595EDF25149F4500D1C3F1 /* RecipesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */; };
 		5A595EE32514A2F100D1C3F1 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */; };
-		5A595EE52514A35900D1C3F1 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EE42514A35900D1C3F1 /* URLSessionFake.swift */; };
 		5A595EE92514A7F900D1C3F1 /* Recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A595EE82514A7F800D1C3F1 /* Recipes.json */; };
 		5A6F958E2522028500CDEAF0 /* RecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F958D2522028500CDEAF0 /* RecipesTableViewCell.swift */; };
 		5AB1398D25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */; };
@@ -63,12 +64,13 @@
 		5A1568A425138A700086EB19 /* RecipleaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1568A825138A700086EB19 /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
 		5A1568AA25138A700086EB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A445AD62549A40B00141EAF /* RecipesSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipesSession.swift; path = "../../../../../P10 Reciplease/model/RecipesSession.swift"; sourceTree = "<group>"; };
+		5A445ADE2549A42C00141EAF /* AlamofireSessionFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireSessionFake.swift; path = "../../../../P10 Reciplease/Test/AlamofireSessionFake.swift"; sourceTree = "<group>"; };
 		5A5023E3253040990061DE1C /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		5A5023E8253045AE0061DE1C /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
 		5A595EDC25149EA800D1C3F1 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesServices.swift; sourceTree = "<group>"; };
 		5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
-		5A595EE42514A35900D1C3F1 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 		5A595EE82514A7F800D1C3F1 /* Recipes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Recipes.json; sourceTree = "<group>"; };
 		5A6F958D2522028500CDEAF0 /* RecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewCell.swift; sourceTree = "<group>"; };
 		5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,10 +158,10 @@
 		5A15689C25138A700086EB19 /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				5A445ADE2549A42C00141EAF /* AlamofireSessionFake.swift */,
 				5A15689D25138A700086EB19 /* RecipleaseTests.swift */,
 				5A15689F25138A700086EB19 /* Info.plist */,
 				5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */,
-				5A595EE42514A35900D1C3F1 /* URLSessionFake.swift */,
 				5A595EE82514A7F800D1C3F1 /* Recipes.json */,
 			);
 			path = RecipleaseTests;
@@ -203,6 +205,7 @@
 				5A15688C25138A6C0086EB19 /* Reciplease.xcdatamodeld */,
 				5A595EDC25149EA800D1C3F1 /* Recipes.swift */,
 				5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */,
+				5A445AD62549A40B00141EAF /* RecipesSession.swift */,
 				5A5023E8253045AE0061DE1C /* RecipeDetail.swift */,
 			);
 			path = Model;
@@ -402,6 +405,7 @@
 				5A595EDD25149EA800D1C3F1 /* Recipes.swift in Sources */,
 				5AB1398D25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift in Sources */,
 				5AFD923E2519E05000A0365C /* RecipesViewController.swift in Sources */,
+				5A445AD72549A40B00141EAF /* RecipesSession.swift in Sources */,
 				5A595EDF25149F4500D1C3F1 /* RecipesServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A15689E25138A700086EB19 /* RecipleaseTests.swift in Sources */,
-				5A595EE52514A35900D1C3F1 /* URLSessionFake.swift in Sources */,
+				5A445ADF2549A42D00141EAF /* AlamofireSessionFake.swift in Sources */,
 				5A595EE32514A2F100D1C3F1 /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

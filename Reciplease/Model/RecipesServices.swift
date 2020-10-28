@@ -24,6 +24,15 @@ class RecipesServices {
     private let apikey = "1ca6fa53868439f0dff48a62bed5b933"
     private let apiId = "ae5de728"
 
+    private let session: AlamoSession
+
+    // MARK: - Initialization
+
+    init(session: AlamoSession = RecipeSession()) {
+        self.session = session
+    }
+    
+
     func getRecipes(with ingredients: [String], callback: @escaping (Swift.Result<Recipes, NetworkError>) -> Void) {
 
         let ingredient = ingredients.joined(separator: ",")
