@@ -64,7 +64,7 @@ class RecipleaseTests: XCTestCase {
             XCTAssertNotNil(error)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 10)
     }
 
     func testGetTranslateShouldPostSuccessCallBackIfNoErrorAndCorrectData() {
@@ -72,6 +72,7 @@ class RecipleaseTests: XCTestCase {
         let session = AlamofireSessionFake(fakeResponse: FakeResponse(response: FakeResponseData.responseOK, data: FakeResponseData.recipesCorrectData))
         let recipeService = RecipesServices(session: session)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
+
         recipeService.getRecipes(with: ["Lemon"]) { result in
             guard case .success(let data) = result else {
                 XCTFail("Test getData method with undecodable data failed.")

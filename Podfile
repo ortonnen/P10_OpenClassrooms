@@ -8,3 +8,7 @@ pod 'AlamofireImage', '4.0.0'
 target "Reciplease" do
  
 end
+
+target "RecipleaseTests" do
+
+end
