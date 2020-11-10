@@ -9,13 +9,15 @@
 import UIKit
 import AlamofireImage
 
+
 class RecipeDetailViewController: UIViewController {
 
     var currentRecipe: Recipe!
-    var favoriteRecipe = FavoriteRecipe()
-    var isFavorite = false
+    private var isFavorite = false
+    private var favoriteRecipes = FavoriteRecipes.all
 
-
+//    private var recipe: CoreDataManager?
+//    private var recipeFav: FavoriteRecipes?
 
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
@@ -29,21 +31,32 @@ class RecipeDetailViewController: UIViewController {
         guard let url = URL(string:currentRecipe.image) else { return }
         recipeTitleLabel.text = currentRecipe.label
         recipeImage.af.setImage(withURL: url)
-
         ingredientListTableView.reloadData()
+
+        if CoreDataManager.checkIfRecipeIsFavorite(for: currentRecipe.label) == true {
+            isFavorite = true
+            favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
+        }
 
         // Do any additional setup after loading the view.
     }
 
     @IBAction func tappedAddRecipeToFavorite(_ sender: Any) {
-        if isFavorite == false {
+        guard favoriteRecipes.count > 0 else {
             favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
+            CoreDataManager.saveRecipe(for: currentRecipe)
             isFavorite = true
-            favoriteRecipe.addFavoriteRecipe(for: currentRecipe, favorite: isFavorite)
-        } else {
+            return
+        }
+        guard isFavorite == false else {
+            CoreDataManager.deleteRecipe(currentRecipe.label)
             favoriteButton.image = #imageLiteral(resourceName: "favorite.png")
             isFavorite = false
+            return
         }
+        CoreDataManager.saveRecipe(for: currentRecipe)
+        favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
+        isFavorite = true
     }
 }
 
