@@ -24,6 +24,7 @@
 		5A595EDF25149F4500D1C3F1 /* RecipesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */; };
 		5A595EE32514A2F100D1C3F1 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */; };
 		5A595EE92514A7F900D1C3F1 /* Recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A595EE82514A7F800D1C3F1 /* Recipes.json */; };
+		5A5E42C0255995DB006B3D9D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5E42BF255995DB006B3D9D /* CoreDataManager.swift */; };
 		5A6F958E2522028500CDEAF0 /* RecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F958D2522028500CDEAF0 /* RecipesTableViewCell.swift */; };
 		5AB1398D25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */; };
 		5AB139922534802400676CC2 /* FavoriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB139912534802400676CC2 /* FavoriteRecipesViewController.swift */; };
@@ -66,14 +67,15 @@
 		5A1568A425138A700086EB19 /* RecipleaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1568A825138A700086EB19 /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
 		5A1568AA25138A700086EB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A445AD62549A40B00141EAF /* RecipesSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipesSession.swift; path = "../../../../../P10 Reciplease/model/RecipesSession.swift"; sourceTree = "<group>"; };
-		5A445ADE2549A42C00141EAF /* AlamofireSessionFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireSessionFake.swift; path = "../../../../P10 Reciplease/Test/AlamofireSessionFake.swift"; sourceTree = "<group>"; };
+		5A445AD62549A40B00141EAF /* RecipesSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesSession.swift; sourceTree = "<group>"; };
+		5A445ADE2549A42C00141EAF /* AlamofireSessionFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireSessionFake.swift; sourceTree = "<group>"; };
 		5A445AED2549A65200141EAF /* FavoriteRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipes.swift; sourceTree = "<group>"; };
 		5A5023E3253040990061DE1C /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		5A595EDC25149EA800D1C3F1 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesServices.swift; sourceTree = "<group>"; };
 		5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		5A595EE82514A7F800D1C3F1 /* Recipes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Recipes.json; sourceTree = "<group>"; };
+		5A5E42BF255995DB006B3D9D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5A6F958D2522028500CDEAF0 /* RecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewCell.swift; sourceTree = "<group>"; };
 		5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesTableViewCell.swift; sourceTree = "<group>"; };
 		5AB139912534802400676CC2 /* FavoriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				5A595EDC25149EA800D1C3F1 /* Recipes.swift */,
 				5A595EDE25149F4500D1C3F1 /* RecipesServices.swift */,
 				5A445AD62549A40B00141EAF /* RecipesSession.swift */,
+				5A5E42BF255995DB006B3D9D /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,7 +298,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Nathalie Ortonne";
 				TargetAttributes = {
 					5A15687F25138A6C0086EB19 = {
@@ -450,6 +453,7 @@
 				5A6F958E2522028500CDEAF0 /* RecipesTableViewCell.swift in Sources */,
 				5A15688425138A6C0086EB19 /* AppDelegate.swift in Sources */,
 				5A595EDD25149EA800D1C3F1 /* Recipes.swift in Sources */,
+				5A5E42C0255995DB006B3D9D /* CoreDataManager.swift in Sources */,
 				5AB1398D25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift in Sources */,
 				5AFD923E2519E05000A0365C /* RecipesViewController.swift in Sources */,
 				5A445AD72549A40B00141EAF /* RecipesSession.swift in Sources */,
