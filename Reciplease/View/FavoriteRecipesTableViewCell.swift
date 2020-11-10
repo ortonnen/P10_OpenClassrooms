@@ -47,7 +47,9 @@ class FavoriteRecipesTableViewCell: UITableViewCell {
 
     func configure(withTitle title: String, subTitle: String, imageUrl: String) {
 
-        guard let url = URL(string:imageUrl) else { return }
+        guard let url = URL(string:imageUrl) else {
+           
+            return }
 
         recipeImageView.af.setImage(withURL: url)
         titleLabel.text = title

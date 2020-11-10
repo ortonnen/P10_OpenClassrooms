@@ -13,12 +13,15 @@ class SearchViewController: UIViewController {
 
     var ingredients: [String] = []
 
+
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var ingredientListeTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         ingredientListeTableView.dataSource = self
+        ingredientListeTableView.delegate = self
         // Do any additional setup after loading the view.
     }
 

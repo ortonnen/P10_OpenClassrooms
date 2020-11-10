@@ -3,7 +3,7 @@
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -47,10 +47,10 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j2X-tE-u0o">
-                                                    <rect key="frame" x="212" y="11" width="92" height="40"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2X-tE-u0o">
+                                                    <rect key="frame" x="212" y="11" width="76" height="40"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kQf-X1-b13">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kQf-X1-b13">
                                                             <rect key="frame" x="0.0" y="0.0" width="91.5" height="50"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="rg4-nZ-bj5" userLabel="Like Stack View">
@@ -93,6 +93,10 @@
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.21302333470000001" green="0.2005681694" blue="0.19673749800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="kQf-X1-b13" firstAttribute="leading" secondItem="j2X-tE-u0o" secondAttribute="leading" id="R4J-nd-smV"/>
+                                                        <constraint firstItem="kQf-X1-b13" firstAttribute="top" secondItem="j2X-tE-u0o" secondAttribute="top" id="iIe-8U-ajv"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -100,6 +104,8 @@
                                                 <constraint firstItem="aeq-4p-rrg" firstAttribute="top" secondItem="FI8-ty-tFV" secondAttribute="bottom" constant="8" id="3m3-bV-NVV"/>
                                                 <constraint firstItem="lTz-20-c7H" firstAttribute="top" secondItem="yhe-7m-rz4" secondAttribute="top" id="5Nn-rs-ZP8"/>
                                                 <constraint firstAttribute="bottom" secondItem="lTz-20-c7H" secondAttribute="bottom" id="9Eb-GN-9sp"/>
+                                                <constraint firstItem="FI8-ty-tFV" firstAttribute="top" secondItem="j2X-tE-u0o" secondAttribute="bottom" constant="1.5" id="AFP-ah-X4f"/>
+                                                <constraint firstItem="j2X-tE-u0o" firstAttribute="leading" secondItem="yhe-7m-rz4" secondAttribute="leading" constant="212" id="AIX-Ue-OFd"/>
                                                 <constraint firstItem="aeq-4p-rrg" firstAttribute="leading" secondItem="yhe-7m-rz4" secondAttribute="leadingMargin" id="E4Z-4p-tFL"/>
                                                 <constraint firstItem="aeq-4p-rrg" firstAttribute="trailing" secondItem="yhe-7m-rz4" secondAttribute="trailingMargin" id="FO1-qb-FQv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="j2X-tE-u0o" secondAttribute="trailing" constant="16" id="HS3-2h-OQI"/>
@@ -139,7 +145,7 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="LMw-bk-dAI"/>
                     <connections>
-                        <outlet property="FavoriteRecipeTableView" destination="iqp-Vp-vMF" id="yvW-kg-Lx5"/>
+                        <outlet property="favoriteRecipeTableView" destination="iqp-Vp-vMF" id="cXQ-dX-2uU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JfW-cy-OIC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -154,7 +160,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iIa-6h-JKy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iIa-6h-JKy">
                                 <rect key="frame" x="0.0" y="44" width="320" height="173"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u45-2Q-5gM">
@@ -194,6 +200,7 @@
                                         </prototypes>
                                         <connections>
                                             <outlet property="dataSource" destination="Ybg-df-RGY" id="hd1-zU-UbY"/>
+                                            <outlet property="delegate" destination="Ybg-df-RGY" id="zRK-pb-9IH"/>
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fv8-tX-8aV">
@@ -214,10 +221,10 @@
                                 <constraints>
                                     <constraint firstItem="9ma-b0-NXR" firstAttribute="top" secondItem="l38-zQ-vdM" secondAttribute="bottom" constant="8" id="6z1-OO-D0p"/>
                                     <constraint firstItem="l38-zQ-vdM" firstAttribute="top" secondItem="u45-2Q-5gM" secondAttribute="top" constant="8" id="Fy0-zQ-9Nj"/>
-                                    <constraint firstItem="Fv8-tX-8aV" firstAttribute="leading" secondItem="u45-2Q-5gM" secondAttribute="leading" constant="36" id="K3l-g0-fMN"/>
                                     <constraint firstItem="l38-zQ-vdM" firstAttribute="leading" secondItem="u45-2Q-5gM" secondAttribute="leading" constant="8" id="M9P-QE-yLd"/>
                                     <constraint firstAttribute="trailing" secondItem="Fv8-tX-8aV" secondAttribute="trailing" constant="36" id="MGh-x6-Ifq"/>
                                     <constraint firstAttribute="trailing" secondItem="l38-zQ-vdM" secondAttribute="trailing" constant="8" id="MuS-jS-wUI"/>
+                                    <constraint firstItem="Fv8-tX-8aV" firstAttribute="centerX" secondItem="u45-2Q-5gM" secondAttribute="centerX" id="iaw-1p-9fG"/>
                                     <constraint firstAttribute="width" secondItem="u45-2Q-5gM" secondAttribute="height" multiplier="160:151" id="mlf-hN-hxm"/>
                                     <constraint firstAttribute="trailing" secondItem="9ma-b0-NXR" secondAttribute="trailing" id="sOA-xL-HmQ"/>
                                     <constraint firstItem="9ma-b0-NXR" firstAttribute="leading" secondItem="u45-2Q-5gM" secondAttribute="leading" id="uEF-jt-Vze"/>
@@ -248,7 +255,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xf8-fP-plc">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="favorite" style="plain" id="BzR-eG-5fL">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="favorite" id="BzR-eG-5fL">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tappedAddRecipeToFavorite:" destination="Ybg-df-RGY" id="Gmk-CS-rM1"/>
@@ -456,7 +463,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="c7W-er-Qfu"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="IngredientListeTableView" destination="d0Q-Pb-TbV" id="fP1-Rv-epE"/>
+                        <outlet property="ingredientListeTableView" destination="d0Q-Pb-TbV" id="syZ-oi-YTs"/>
                         <outlet property="ingredientTextField" destination="RFN-YH-93c" id="93l-RR-Xj8"/>
                     </connections>
                 </viewController>
