@@ -34,9 +34,13 @@ class AlamofireSessionFake: AlamoSession {
         guard let httpResponse = fakeResponse.response else {return}
         guard let requestData = fakeResponse.data else {return}
         let urlRequest = URLRequest(url: URL(string: "https://www.apple.com")!)
-        let result = try? JSONSerialization.data(withJSONObject: requestData, options: .fragmentsAllowed)
+//        let response = try? JSONSerialization.data(withJSONObject: requestData, options: .fragmentsAllowed)
 
-        callBack(AFDataResponse<Any>(request: urlRequest, response: httpResponse, data: requestData, metrics: .none, serializationDuration: .zero, result:result as! Result<Any, AFError>))
+        let response = JSONResponseSerializer()
+        let result = try? response.serialize(request: urlRequest, response: httpResponse, data: requestData, error: nil)
+        
+        callBack(AFDataResponse<Any>(request: urlRequest, response: httpResponse, data: requestData, metrics: .none, serializationDuration: .zero, result: result as! Result<Any, AFError>))
     }
-
 }
+
+

@@ -49,7 +49,7 @@ class RecipesTableViewCell: UITableViewCell {
         subTitleLabel.layer.shadowOpacity = 2.0
     }
 
-    func configure(withTitle title: String, subTitle: [String], like: Int, timing: Int, imageUrl: String) {
+    func configure(withTitle title: String, subTitle: [String], like: Double, timing: Double, imageUrl: String) {
 
         guard let url = URL(string:imageUrl) else { return }
 

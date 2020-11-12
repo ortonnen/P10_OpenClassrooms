@@ -39,25 +39,42 @@ class RecipesServices {
 
         guard let url = URL(string: "\(recipesURL)&q=\(ingredient)))&app_id=\(apiId)&app_key=\(apikey)") else { return }
 
-        AF.request(url)
-            .validate(statusCode: 200 ..< 400)
-            .responseJSON { (dataResponse) in
+        session.request(with: url) { (dataResponse) in
 
-                guard dataResponse.error == nil else {
-                    callback(.failure(.error))
-                    return
-                }
-                guard dataResponse.data != nil else {
-                    callback(.failure(.noData))
-                    return
-                }
-                do {
-                    let responseJSON = try JSONDecoder().decode(Recipes.self, from: dataResponse.data!)
-                    callback(.success(responseJSON))
-                } catch {
-                    callback(.failure(.decodeDataError))
-                }
+            guard dataResponse.error == nil else {
+                callback(.failure(.error))
+                return
             }
+            guard dataResponse.data != nil else {
+                callback(.failure(.noData))
+                return
+            }
+            do {
+                let responseJSON = try JSONDecoder().decode(Recipes.self, from: dataResponse.data!)
+                callback(.success(responseJSON))
+            } catch {
+                callback(.failure(.decodeDataError))
+            }
+        }
+//        AF.request(url)
+//            .validate(statusCode: 200 ..< 400)
+//            .responseJSON { (dataResponse) in
+//
+//                guard dataResponse.error == nil else {
+//                    callback(.failure(.error))
+//                    return
+//                }
+//                guard dataResponse.data != nil else {
+//                    callback(.failure(.noData))
+//                    return
+//                }
+//                do {
+//                    let responseJSON = try JSONDecoder().decode(Recipes.self, from: dataResponse.data!)
+//                    callback(.success(responseJSON))
+//                } catch {
+//                    callback(.failure(.decodeDataError))
+//                }
+//            }
     }
 }
 

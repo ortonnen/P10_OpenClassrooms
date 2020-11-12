@@ -21,6 +21,15 @@ class FavoriteRecipesViewController: UIViewController {
         print(favoriteRecipes.count)
 
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        guard let recipesVC = segue.destination as? RecipeDetailViewController else {
+            return
+        }
+        guard let indexPath = favoriteRecipeTableView.indexPathForSelectedRow else {return}
+        
+
+    }
 }
 //MARK: TableView
 extension FavoriteRecipesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -54,6 +63,13 @@ extension FavoriteRecipesViewController: UITableViewDataSource, UITableViewDeleg
         CoreDataManager.deleteRecipe(recipe)
         favoriteRecipes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        recipe = favoriteRecipes[indexPath.row]
+
+//            selectedRecipe = recipes[indexPath.row]
+//            selectedRecipeImage = (tableView.cellForRow(at: indexPath) as! RecipeTableViewCell).backgroundImageView.image
+//            performSegue(withIdentifier: segueIdentifier, sender: self)
         }
     }
 

@@ -28,6 +28,7 @@
 		5A6F958E2522028500CDEAF0 /* RecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F958D2522028500CDEAF0 /* RecipesTableViewCell.swift */; };
 		5AB1398D25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */; };
 		5AB139922534802400676CC2 /* FavoriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB139912534802400676CC2 /* FavoriteRecipesViewController.swift */; };
+		5ABC4EF4255AC47300103349 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC4EF3255AC47300103349 /* CoreDataTest.swift */; };
 		5AFD92302518A68C00A0365C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD922F2518A68C00A0365C /* SearchViewController.swift */; };
 		5AFD923E2519E05000A0365C /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD923D2519E05000A0365C /* RecipesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		5A6F958D2522028500CDEAF0 /* RecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewCell.swift; sourceTree = "<group>"; };
 		5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesTableViewCell.swift; sourceTree = "<group>"; };
 		5AB139912534802400676CC2 /* FavoriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesViewController.swift; sourceTree = "<group>"; };
+		5ABC4EF3255AC47300103349 /* CoreDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataTest.swift; path = RecipleaseTests/CoreDataTest/CoreDataTest.swift; sourceTree = SOURCE_ROOT; };
 		5AFD922F2518A68C00A0365C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5AFD923D2519E05000A0365C /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		692B913848BFC031080ED080 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,10 +170,9 @@
 		5A15689C25138A700086EB19 /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				5A445ADE2549A42C00141EAF /* AlamofireSessionFake.swift */,
-				5A15689D25138A700086EB19 /* RecipleaseTests.swift */,
+				5ABC4EF9255AC63500103349 /* RecipleaseServiceTest */,
+				5ABC4EF8255AC61F00103349 /* CoreDataTest */,
 				5A15689F25138A700086EB19 /* Info.plist */,
-				5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */,
 				5A595EE82514A7F800D1C3F1 /* Recipes.json */,
 			);
 			path = RecipleaseTests;
@@ -229,6 +230,24 @@
 				5A15689425138A700086EB19 /* Info.plist */,
 			);
 			path = "Other Files";
+			sourceTree = "<group>";
+		};
+		5ABC4EF8255AC61F00103349 /* CoreDataTest */ = {
+			isa = PBXGroup;
+			children = (
+				5ABC4EF3255AC47300103349 /* CoreDataTest.swift */,
+			);
+			path = CoreDataTest;
+			sourceTree = "<group>";
+		};
+		5ABC4EF9255AC63500103349 /* RecipleaseServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				5A595EE22514A2F100D1C3F1 /* FakeResponseData.swift */,
+				5A15689D25138A700086EB19 /* RecipleaseTests.swift */,
+				5A445ADE2549A42C00141EAF /* AlamofireSessionFake.swift */,
+			);
+			path = RecipleaseServiceTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ABC4EF4255AC47300103349 /* CoreDataTest.swift in Sources */,
 				5A15689E25138A700086EB19 /* RecipleaseTests.swift in Sources */,
 				5A445ADF2549A42D00141EAF /* AlamofireSessionFake.swift in Sources */,
 				5A595EE32514A2F100D1C3F1 /* FakeResponseData.swift in Sources */,

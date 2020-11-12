@@ -16,9 +16,6 @@ class RecipeDetailViewController: UIViewController {
     private var isFavorite = false
     private var favoriteRecipes = FavoriteRecipes.all
 
-//    private var recipe: CoreDataManager?
-//    private var recipeFav: FavoriteRecipes?
-
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
@@ -37,7 +34,7 @@ class RecipeDetailViewController: UIViewController {
             isFavorite = true
             favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
         }
-
+        
         // Do any additional setup after loading the view.
     }
 

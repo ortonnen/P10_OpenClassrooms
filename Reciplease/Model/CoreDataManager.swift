@@ -23,12 +23,11 @@ class CoreDataManager {
         let recipe = FavoriteRecipes(context: AppDelegate.viewContext)
         recipe.name = currentRecipe.label
         recipe.ingredients = currentRecipe.ingredients[0].text
-        recipe.isFavorite = true
         recipe.urlImage = currentRecipe.url
         try? AppDelegate.viewContext.save()
     }
 
-    static func checkIfRecipeIsFavorite (for currentRecipeTitle: String) -> Bool {
+    static func checkIfRecipeIsFavorite(for currentRecipeTitle: String) -> Bool {
         let request: NSFetchRequest<FavoriteRecipes> = FavoriteRecipes.fetchRequest()
         request.predicate = NSPredicate(format: "name = %@", currentRecipeTitle)
         guard let recipe = try? AppDelegate.viewContext.fetch(request) else {
@@ -39,4 +38,10 @@ class CoreDataManager {
         }
         return true
     }
+
+//    static func segueToDetailRecipe(for favoriteRecipe: String) -> Recipe {
+//        let FavotiteRecipe = FavoriteRecipes(context: AppDelegate.viewContext)
+//
+//        
+//    }
 }

@@ -121,6 +121,7 @@
                                             <outlet property="recipeImageView" destination="lTz-20-c7H" id="DDp-TK-Tqw"/>
                                             <outlet property="subtitleLabel" destination="aeq-4p-rrg" id="KZh-HU-ZBy"/>
                                             <outlet property="titleLabel" destination="FI8-ty-tFV" id="NA0-mc-YqQ"/>
+                                            <segue destination="Ybg-df-RGY" kind="show" id="bGC-eC-adG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -157,14 +158,14 @@
             <objects>
                 <viewController id="Ybg-df-RGY" customClass="RecipeDetailViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5bG-NQ-e5t">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iIa-6h-JKy">
-                                <rect key="frame" x="0.0" y="44" width="320" height="173"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="246"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u45-2Q-5gM">
-                                <rect key="frame" x="0.0" y="217" width="320" height="302"/>
+                                <rect key="frame" x="0.0" y="246" width="320" height="302"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l38-zQ-vdM">
                                         <rect key="frame" x="8" y="8" width="304" height="36"/>
@@ -212,9 +213,6 @@
                                         <state key="normal" title="Get Directions">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="qhN-pg-WJu" kind="show" id="aOq-vg-u2H"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21302333470000001" green="0.2005681694" blue="0.19673749800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -233,7 +231,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Recipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtH-tS-R1c">
-                                <rect key="frame" x="0.0" y="183.5" width="320" height="33.5"/>
+                                <rect key="frame" x="0.0" y="212.5" width="320" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -272,22 +270,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVO-tK-1Cv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2047.5" y="479.57746478873241"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="PKP-5N-sRm">
-            <objects>
-                <viewController id="qhN-pg-WJu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ooK-n7-b0i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vWp-EZ-PVv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="W9U-v6-1Fa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UGP-LH-mbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3023" y="480"/>
         </scene>
         <!--Search-->
         <scene sceneID="7KP-9x-5ua">
@@ -636,6 +618,9 @@
             <point key="canvasLocation" x="-461" y="54"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bGC-eC-adG"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="addToFavorite" width="25" height="25"/>

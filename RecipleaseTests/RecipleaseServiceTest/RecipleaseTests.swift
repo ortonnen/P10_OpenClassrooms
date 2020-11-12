@@ -8,6 +8,7 @@
 
 import XCTest
 import Alamofire
+
 @testable import Reciplease
 
 class RecipleaseTests: XCTestCase {
@@ -30,7 +31,7 @@ class RecipleaseTests: XCTestCase {
             expectation.fulfill()
             XCTAssertNotNil(error)
         }
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 10)
     }
 
     func testGetRecipeShouldPostFailedCallbackIfNoData() {
@@ -47,7 +48,7 @@ class RecipleaseTests: XCTestCase {
             XCTAssertNotNil(error)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 10)
     }
 
     func testGetRecipeShouldPostFailedCallbackIfIncorrectResponse() {
