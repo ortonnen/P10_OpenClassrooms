@@ -12,53 +12,65 @@ import AlamofireImage
 
 class RecipeDetailViewController: UIViewController {
 
+    //MARK: - Properties
     var currentRecipe: Recipe!
+    var coreDataManager: CoreDataManager?
     private var isFavorite = false
-    private var favoriteRecipes = FavoriteRecipes.all
 
+    //MARK: - Outlet
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
-
     @IBOutlet weak var ingredientListTableView: UITableView!
 
+    //MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let coredataStack = appdelegate.coreDataStack
+        coreDataManager = CoreDataManager(coreDataStack: coredataStack)
 
         guard let url = URL(string:currentRecipe.image) else { return }
         recipeTitleLabel.text = currentRecipe.label
         recipeImage.af.setImage(withURL: url)
         ingredientListTableView.reloadData()
+    }
 
-        if CoreDataManager.checkIfRecipeIsFavorite(for: currentRecipe.label) == true {
+    override func viewWillAppear(_ animated: Bool) {
+        if coreDataManager?.checkIfRecipeIsFavorite(for: currentRecipe.label) == true {
             isFavorite = true
             favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
         }
-        
-        // Do any additional setup after loading the view.
     }
 
+    fileprivate func addToFavorite() {
+        favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
+        coreDataManager?.saveRecipe(for: currentRecipe)
+        isFavorite = true
+    }
+
+    fileprivate func deleteToFavorite() {
+        coreDataManager?.deleteRecipe(currentRecipe.label)
+        favoriteButton.image = #imageLiteral(resourceName: "favorite.png")
+        isFavorite = false
+    }
+
+    //MARK: - Action
     @IBAction func tappedAddRecipeToFavorite(_ sender: Any) {
-        guard favoriteRecipes.count > 0 else {
-            favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
-            CoreDataManager.saveRecipe(for: currentRecipe)
-            isFavorite = true
+        let favoriteRecipes = coreDataManager?.favoritesRecipes
+        guard favoriteRecipes?.count ?? 0 > 0 else {
+            addToFavorite()
             return
         }
         guard isFavorite == false else {
-            CoreDataManager.deleteRecipe(currentRecipe.label)
-            favoriteButton.image = #imageLiteral(resourceName: "favorite.png")
-            isFavorite = false
+            deleteToFavorite()
             return
         }
-        CoreDataManager.saveRecipe(for: currentRecipe)
-        favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
-        isFavorite = true
+        addToFavorite()
     }
 }
 
-
-//MARK: TableView
+//MARK: - TableView
 extension RecipeDetailViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,14 +78,13 @@ extension RecipeDetailViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentRecipe.ingredients.count
+        return currentRecipe.ingredientLines.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ingredientListTableView.dequeueReusableCell(withIdentifier: "ingredientListCell", for: indexPath)
-        let ingredient = currentRecipe.ingredients[indexPath.row].text
+        let ingredient = currentRecipe.ingredientLines[indexPath.row]
         cell.textLabel?.text = "- \(ingredient)"
-
 
         return cell
     }

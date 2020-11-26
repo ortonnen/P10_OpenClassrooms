@@ -12,52 +12,86 @@ import CoreData
 
 
 class CoreDataTest: XCTestCase {
+    //MARK: - Properties
+    var coreDataStack: CoreDataStack!
+    var coreDataManager: CoreDataManager!
+    var recipe = Recipe(uri: "http://www.edamam.com/ontologies/edamam.owl#recipe_2fb391cceeec3d82920a2035f1849d72",
+                        label: "Lemon Confit",
+                        image: "https://www.edamam.com/web-img/d32/d32b4dc2e7bd9d4d1a24bbced0c89143.jpg",
+                        url: "http://ruhlman.com/2011/03/lemon-confit/",
+                        yield: 2.0,
+                        ingredientLines: ["Kosher salt to cover (about 2 pounds/900 grams)"], totalTime: 0.0)
 
-    private let fakeRecipe = Recipe(uri: "",
-                                    label: "Lemon Confit",
-                                    image: "https://www.edamam.com/web-img/d32/d32b4dc2e7bd9d4d1a24bbced0c89143.jpg",
-                                    url: "",
-                                    yield: 2.0,
-                                    healthLabels: [""],
-                                    ingredientLines: [
-        "Kosher salt to cover (about 2 pounds/900 grams)"],
-                                    ingredients: [Ingredient(text: "Kosher salt to cover (about 2 pounds/900 grams)",
-                                    weight: 907.18474,
-                                    image: "https://www.edamam.com/food-img/694/6943ea510918c6025795e8dc6e6eaaeb.jpg")],
-                                    totalTime: 0.0)
-
-
+    //MARK: - Methods
     override func setUp() {
-        CoreDataManager.deleteRecipe(fakeRecipe.label)
+        super.setUp()
+        coreDataStack = FakeCoreDataStack()
+        coreDataManager = CoreDataManager(coreDataStack: coreDataStack)
     }
+
     override func tearDown() {
-        CoreDataManager.deleteRecipe(fakeRecipe.label)
-    }
-    
-    func testGivenFavoriteAvailable_WhenAddFavorite_ThenFavoriteIsAddedAndExists() {
-        CoreDataManager.saveRecipe(for: fakeRecipe)
-        XCTAssertTrue(CoreDataManager.checkIfRecipeIsFavorite(for: fakeRecipe.label))
-        XCTAssertTrue(CoreDataManager.checkIfRecipeIsFavorite(for: "Lemon Confit"))
+        super.tearDown()
+        coreDataManager = nil
+        coreDataStack = nil
     }
 
-    func testdelete() {
-        CoreDataManager.deleteRecipe(fakeRecipe.label)
+    func testAddTeskMethods_WhenRecipeAddInFavorite_ThenShouldBeCorrectlySaved() {
+        coreDataManager.saveRecipe(for: recipe)
 
-        XCTAssertFalse(CoreDataManager.checkIfRecipeIsFavorite(for: fakeRecipe.label))
-        XCTAssertFalse(CoreDataManager.checkIfRecipeIsFavorite(for: "Lemon Confit"))
+        XCTAssertTrue(!coreDataManager.favoritesRecipes.isEmpty)
+        XCTAssertTrue(coreDataManager.favoritesRecipes.count == 1)
+        XCTAssertTrue(coreDataManager.favoritesRecipes[0].name == "Lemon Confit")
     }
-    
-    func testGivenFavoriteCreatedAndRemoved_WhenAddFavoriteTestAndDeleteIt_ThenFavoriteTestShouldNotExist() {
-        CoreDataManager.saveRecipe(for: fakeRecipe)
 
-        XCTAssertTrue(CoreDataManager.checkIfRecipeIsFavorite(for: fakeRecipe.label))
-        XCTAssertTrue(CoreDataManager.checkIfRecipeIsFavorite(for: "Lemon Confit"))
+    func testDeleteRecipe_WhenRecipeAddInFavorite_ThenShouldBeCorrectlyDeleted() {
+        coreDataManager.saveRecipe(for: recipe)
+        coreDataManager.deleteRecipe(recipe.label)
 
-        CoreDataManager.deleteRecipe(fakeRecipe.label)
+        XCTAssertTrue(coreDataManager.favoritesRecipes.isEmpty)
+    }
 
-        XCTAssertFalse(CoreDataManager.checkIfRecipeIsFavorite(for: fakeRecipe.label))
-        XCTAssertFalse(CoreDataManager.checkIfRecipeIsFavorite(for: "Lemon Confit"))
-        }
+    func testAddRecipe_WhenRecipeAddInFavorite_ThenShouldHaveRecipeInCoreData() {
+        coreDataManager.saveRecipe(for: recipe)
+
+        XCTAssertTrue(coreDataManager.checkIfRecipeIsFavorite(for: recipe.label))
+        XCTAssertTrue(!coreDataManager.favoritesRecipes.isEmpty)
+        XCTAssertTrue(coreDataManager.favoritesRecipes.count == 1)
+        XCTAssertTrue(coreDataManager.favoritesRecipes[0].name == "Lemon Confit")
+    }
+
+    func testAddRecipeAndDeleteRecipe_WhenRecipeIsAlreadyPresentAndItIsDelete_ThenShouldHaveNotAddRecipeInCoreData() {
+        coreDataManager.saveRecipe(for: recipe)
+        XCTAssertTrue(coreDataManager.checkIfRecipeIsFavorite(for: recipe.label))
+        XCTAssertTrue(!coreDataManager.favoritesRecipes.isEmpty)
+        XCTAssertTrue(coreDataManager.favoritesRecipes.count == 1)
+        XCTAssertTrue(coreDataManager.favoritesRecipes[0].name == "Lemon Confit")
+
+        coreDataManager.deleteRecipe(recipe.label)
+
+        XCTAssertFalse(coreDataManager.checkIfRecipeIsFavorite(for: recipe.label))
+        XCTAssertTrue(coreDataManager.favoritesRecipes.isEmpty)
+    }
+
+    func testAddRecipes_WhenManyRecipeAddInFavorite_ThenShouldHaveAllRecipeInCoreData() {
+        coreDataManager.saveRecipe(for: recipe)
+        coreDataManager.saveRecipe(for: recipe)
+        coreDataManager.saveRecipe(for: recipe)
+
+        XCTAssertTrue(!coreDataManager.favoritesRecipes.isEmpty)
+        XCTAssertTrue(coreDataManager.favoritesRecipes.count == 3)
+    }
+
+    func testMapRecipe_WhenFavoriteRecipeMapToRecipe_ThenShouldHaveRecipe() {
+        var newRecipe: Recipe
+
+        coreDataManager.saveRecipe(for: Recipe(uri: "", label: "Salmon", image: "image", url: "", yield: 10, ingredientLines:["salmon", "lemon"], totalTime: 1.5))
+
+        newRecipe = coreDataManager.map(for: coreDataManager.favoritesRecipes[0])
+
+        XCTAssertEqual(coreDataManager.favoritesRecipes[0].name, newRecipe.label)
+        XCTAssertEqual(coreDataManager.favoritesRecipes[0].urlImage, newRecipe.image)
+    }
 }
+
 
 

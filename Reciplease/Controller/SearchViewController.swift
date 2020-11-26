@@ -11,18 +11,18 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    //MARK: - Properties
     var ingredients: [String] = []
 
-
+    //MARK: - Outlet
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var ingredientListeTableView: UITableView!
 
+    //MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
         ingredientListeTableView.dataSource = self
         ingredientListeTableView.delegate = self
-        // Do any additional setup after loading the view.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,6 +36,12 @@ class SearchViewController: UIViewController {
         recipesVC.ingredients = ingredients
     }
 
+    private func addIngredient(for ingredient: String) {
+        ingredients.append(ingredient)
+        ingredientListeTableView.reloadData()
+    }
+
+    //MARK: - Action
     @IBAction func tappedAddIngredientButton() {
         guard let text = ingredientTextField.text, !text.isEmpty else {
             textIsEmptyAlerte()
@@ -49,15 +55,10 @@ class SearchViewController: UIViewController {
         ingredientTextField.text = ""
         ingredientListeTableView.reloadData()
     }
-
-    private func addIngredient(for ingredient: String) {
-        ingredients.append(ingredient)
-        ingredientListeTableView.reloadData()
-    }
 }
 
+//MARK: - TableView
 extension SearchViewController: UITableViewDelegate {
-
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -67,7 +68,6 @@ extension SearchViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
 
         let ingredient = ingredients[indexPath.row]
@@ -77,9 +77,8 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
-//MARK: Alerte
+//MARK: - Alerte
 extension SearchViewController {
-
     private func textIsEmptyAlerte() {
         let alerte = UIAlertController(title: "Empty Ingredient Field", message: "please enter an ingredient ", preferredStyle: .alert)
         let alerteAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
@@ -88,11 +87,10 @@ extension SearchViewController {
     }
 }
 
-//MARK: Keyboard
+//MARK: - Keyboard
 extension SearchViewController {
 
     @IBAction func dismissKeyboard(_ sender: Any) {
         ingredientTextField.resignFirstResponder()
     }
 }
-

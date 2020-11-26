@@ -16,14 +16,13 @@ protocol AlamoSession {
 
 
 // MARK: RecipeSession
-
 class RecipeSession: AlamoSession {
     func request(with url: URL, callBack: @escaping (AFDataResponse<Any>) -> Void) {
         AF.request(url)
             .validate(statusCode: 200 ..< 400)
             .responseJSON { (data) in
-            callBack(data)
-        }
+                callBack(data)
+            }
     }
 }
 

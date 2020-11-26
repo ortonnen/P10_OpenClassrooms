@@ -29,16 +29,8 @@ struct Recipe: Codable {
     let image: String
     let url: String
     let yield: Double
-    let healthLabels, ingredientLines: [String]
-    let ingredients: [Ingredient]
+    var ingredientLines: [String]
     let totalTime: Double
-}
-
-// MARK: - Ingredient
-struct Ingredient: Codable {
-    let text: String
-    let weight: Double
-    let image: String?
 }
 
 // MARK: - RecipesError

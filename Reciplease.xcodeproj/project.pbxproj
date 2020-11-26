@@ -29,6 +29,8 @@
 		5AB1398D25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */; };
 		5AB139922534802400676CC2 /* FavoriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB139912534802400676CC2 /* FavoriteRecipesViewController.swift */; };
 		5ABC4EF4255AC47300103349 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC4EF3255AC47300103349 /* CoreDataTest.swift */; };
+		5ABC4F16256282FF00103349 /* FakeCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC4F15256282FE00103349 /* FakeCoreDataStack.swift */; };
+		5ADB5B4F25631799009559F9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB5B4E25631798009559F9 /* CoreDataStack.swift */; };
 		5AFD92302518A68C00A0365C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD922F2518A68C00A0365C /* SearchViewController.swift */; };
 		5AFD923E2519E05000A0365C /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD923D2519E05000A0365C /* RecipesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +83,8 @@
 		5AB1398C25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesTableViewCell.swift; sourceTree = "<group>"; };
 		5AB139912534802400676CC2 /* FavoriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesViewController.swift; sourceTree = "<group>"; };
 		5ABC4EF3255AC47300103349 /* CoreDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataTest.swift; path = RecipleaseTests/CoreDataTest/CoreDataTest.swift; sourceTree = SOURCE_ROOT; };
+		5ABC4F15256282FE00103349 /* FakeCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCoreDataStack.swift; sourceTree = "<group>"; };
+		5ADB5B4E25631798009559F9 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5AFD922F2518A68C00A0365C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5AFD923D2519E05000A0365C /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		692B913848BFC031080ED080 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 			children = (
 				5A15688325138A6C0086EB19 /* AppDelegate.swift */,
 				5A15689425138A700086EB19 /* Info.plist */,
+				5ADB5B4E25631798009559F9 /* CoreDataStack.swift */,
 			);
 			path = "Other Files";
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				5ABC4EF3255AC47300103349 /* CoreDataTest.swift */,
+				5ABC4F15256282FE00103349 /* FakeCoreDataStack.swift */,
 			);
 			path = CoreDataTest;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 				5A6F958E2522028500CDEAF0 /* RecipesTableViewCell.swift in Sources */,
 				5A15688425138A6C0086EB19 /* AppDelegate.swift in Sources */,
 				5A595EDD25149EA800D1C3F1 /* Recipes.swift in Sources */,
+				5ADB5B4F25631799009559F9 /* CoreDataStack.swift in Sources */,
 				5A5E42C0255995DB006B3D9D /* CoreDataManager.swift in Sources */,
 				5AB1398D25347FC900676CC2 /* FavoriteRecipesTableViewCell.swift in Sources */,
 				5AFD923E2519E05000A0365C /* RecipesViewController.swift in Sources */,
@@ -488,6 +495,7 @@
 				5ABC4EF4255AC47300103349 /* CoreDataTest.swift in Sources */,
 				5A15689E25138A700086EB19 /* RecipleaseTests.swift in Sources */,
 				5A445ADF2549A42D00141EAF /* AlamofireSessionFake.swift in Sources */,
+				5ABC4F16256282FF00103349 /* FakeCoreDataStack.swift in Sources */,
 				5A595EE32514A2F100D1C3F1 /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

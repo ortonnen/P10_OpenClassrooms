@@ -10,21 +10,22 @@ import UIKit
 
 class FavoriteRecipesTableViewCell: UITableViewCell {
 
+    //MARK: - Outlet
     @IBOutlet weak var recipeImageView: UIImageView!
-
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
 
+    //MARK: - Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
         addShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     override func prepareForReuse() {
@@ -33,6 +34,7 @@ class FavoriteRecipesTableViewCell: UITableViewCell {
         recipeImageView.image = nil
     }
 
+    /// add shadow for title and subtitle
     private func addShadow() {
         titleLabel.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
         titleLabel.layer.shadowRadius = 2.0
@@ -45,15 +47,15 @@ class FavoriteRecipesTableViewCell: UITableViewCell {
         subtitleLabel.layer.shadowOpacity = 2.0
     }
 
-    func configure(withTitle title: String, subTitle: String, imageUrl: String) {
+    ///configure cell appearance
+    func configure(withTitle title: String, subTitle: String, like: Double, timing: Double, imageUrl: String) {
 
-        guard let url = URL(string:imageUrl) else {
-           
-            return }
+        guard let url = URL(string: imageUrl) else { return }
 
         recipeImageView.af.setImage(withURL: url)
         titleLabel.text = title
         subtitleLabel.text = subTitle
+        likeLabel.text = String(like)
+        timerLabel.text = String(timing)
     }
-
 }

@@ -9,29 +9,36 @@
 import UIKit
 
 class FavoriteRecipesViewController: UIViewController {
-    var favoriteRecipes = FavoriteRecipes.all
 
+    //MARK: - Properties
+    var coreDataManager: CoreDataManager?
+
+    //MARK: - Outlet
     @IBOutlet weak var favoriteRecipeTableView: UITableView!
+
+    //MARK: - Methods
+    override func viewDidLoad() {
+        guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let coredataStack = appdelegate.coreDataStack
+        coreDataManager = CoreDataManager(coreDataStack: coredataStack)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
-        favoriteRecipes = FavoriteRecipes.all
         favoriteRecipeTableView.reloadData()
-        print(favoriteRecipes.count)
-
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let recipesVC = segue.destination as? RecipeDetailViewController else {
             return
         }
         guard let indexPath = favoriteRecipeTableView.indexPathForSelectedRow else {return}
-        
 
+        recipesVC.currentRecipe = coreDataManager?.map(for: (coreDataManager?.favoritesRecipes[indexPath.row])!)
     }
 }
-//MARK: TableView
+
+//MARK: - TableView
 extension FavoriteRecipesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,37 +46,32 @@ extension FavoriteRecipesViewController: UITableViewDataSource, UITableViewDeleg
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteRecipes.count
+        return coreDataManager?.favoritesRecipes.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteRecipeCell", for: indexPath) as? FavoriteRecipesTableViewCell else {
             return UITableViewCell()
         }
+        guard let favoriteRecipes = coreDataManager?.favoritesRecipes else { return UITableViewCell() }
+
         guard favoriteRecipes.count > 0 else {
             return cell
         }
-        
-        cell.configure(withTitle: favoriteRecipes[indexPath.row].name ?? "No Recipe", subTitle: favoriteRecipes[indexPath.row].ingredients ?? "", imageUrl: favoriteRecipes[indexPath.row].urlImage ?? "https://www.edamam.com/web-img/d32/d32b4dc2e7bd9d4d1a24bbced0c89143.jpg")
+
+        cell.configure(withTitle: favoriteRecipes[indexPath.row].name!, subTitle: favoriteRecipes[indexPath.row].ingredients!, like: favoriteRecipes[indexPath.row].like, timing: favoriteRecipes[indexPath.row].timer, imageUrl: favoriteRecipes[indexPath.row].urlImage!)
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        guard let recipe = favoriteRecipes[indexPath.row].name else { return }
+        guard let recipe = coreDataManager?.favoritesRecipes[indexPath.row].name else { return }
+        guard var favoriteRecipes = coreDataManager?.favoritesRecipes else {return}
 
-        CoreDataManager.deleteRecipe(recipe)
+        coreDataManager?.deleteRecipe(recipe)
         favoriteRecipes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        recipe = favoriteRecipes[indexPath.row]
-
-//            selectedRecipe = recipes[indexPath.row]
-//            selectedRecipeImage = (tableView.cellForRow(at: indexPath) as! RecipeTableViewCell).backgroundImageView.image
-//            performSegue(withIdentifier: segueIdentifier, sender: self)
-        }
     }
+}
 
