@@ -27,6 +27,7 @@ class CoreDataManager {
         }
 
     //MARK: - Methods
+    ///method to delete Recipe in Favorite
     func deleteRecipe(_ currentRecipeTitle: String) {
             let request: NSFetchRequest<FavoriteRecipes> = FavoriteRecipes.fetchRequest()
             request.predicate = NSPredicate(format: "name = %@", currentRecipeTitle)
@@ -36,6 +37,7 @@ class CoreDataManager {
 
         }
 
+    ///method to save Recipe in Favorite
     func saveRecipe(for currentRecipe: Recipe) {
         let recipe = FavoriteRecipes(context: managedObjectContext)
 
@@ -47,6 +49,7 @@ class CoreDataManager {
         coreDataStack.saveContext()
     }
 
+    /// method to check if recipe is already in favorite
     func checkIfRecipeIsFavorite(for currentRecipeTitle: String) -> Bool {
         let request: NSFetchRequest<FavoriteRecipes> = FavoriteRecipes.fetchRequest()
         request.predicate = NSPredicate(format: "name = %@", currentRecipeTitle)
@@ -59,6 +62,7 @@ class CoreDataManager {
         return true
     }
 
+    ///method to map favorite recipe to Recipe
     func map(for favoriteRecipe: FavoriteRecipes) -> Recipe {
         guard let ingredientsList = favoriteRecipe.ingredients else { return Recipe(uri: "", label: "No Title", image: "", url: "", yield: 0, ingredientLines: [""], totalTime: 0) }
         let ingredients = (ingredientsList.components(separatedBy: ","))

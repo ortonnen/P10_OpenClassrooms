@@ -14,7 +14,6 @@ protocol AlamoSession {
     func request(with url: URL, callBack: @escaping (AFDataResponse<Any>) -> Void)
 }
 
-
 // MARK: RecipeSession
 class RecipeSession: AlamoSession {
     func request(with url: URL, callBack: @escaping (AFDataResponse<Any>) -> Void) {

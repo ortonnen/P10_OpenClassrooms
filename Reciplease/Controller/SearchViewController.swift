@@ -25,6 +25,7 @@ class SearchViewController: UIViewController {
         ingredientListeTableView.delegate = self
     }
 
+    ///method to retrieve the ingredient array and pass it into the RecipesViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard ingredients.count > 0 else {
             textIsEmptyAlerte()
@@ -36,6 +37,7 @@ class SearchViewController: UIViewController {
         recipesVC.ingredients = ingredients
     }
 
+    ///method to add ingredient in array
     private func addIngredient(for ingredient: String) {
         ingredients.append(ingredient)
         ingredientListeTableView.reloadData()
@@ -79,6 +81,7 @@ extension SearchViewController: UITableViewDataSource {
 
 //MARK: - Alerte
 extension SearchViewController {
+    /// alert if ingredient text is empty
     private func textIsEmptyAlerte() {
         let alerte = UIAlertController(title: "Empty Ingredient Field", message: "please enter an ingredient ", preferredStyle: .alert)
         let alerteAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

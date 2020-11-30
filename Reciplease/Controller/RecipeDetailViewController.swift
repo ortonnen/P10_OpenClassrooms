@@ -43,12 +43,14 @@ class RecipeDetailViewController: UIViewController {
         }
     }
 
+    ///method to save recipe in Favorite
     fileprivate func addToFavorite() {
         favoriteButton.image = #imageLiteral(resourceName: "addToFavorite.png")
         coreDataManager?.saveRecipe(for: currentRecipe)
         isFavorite = true
     }
 
+    ///method to delete recipe in favorite
     fileprivate func deleteToFavorite() {
         coreDataManager?.deleteRecipe(currentRecipe.label)
         favoriteButton.image = #imageLiteral(resourceName: "favorite.png")

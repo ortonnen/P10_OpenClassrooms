@@ -32,6 +32,7 @@ class RecipesServices {
         self.session = session
     }
 
+    ///network call method
     func getRecipes(with ingredients: [String], callback: @escaping (Swift.Result<Recipes, NetworkError>) -> Void) {
 
         let ingredient = ingredients.joined(separator: ",")

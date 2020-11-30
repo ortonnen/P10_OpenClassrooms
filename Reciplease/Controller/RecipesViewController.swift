@@ -23,15 +23,29 @@ class RecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeTableView.dataSource = self
+        getRecipe()
+    }
+
+    ///method to retrieve Hit array and pass it to current into the RecipesDetailViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let recipesVC = segue.destination as? RecipeDetailViewController else {
+            return
+        }
+        guard let indexPath = recipeTableView.indexPathForSelectedRow else {return}
+        recipesVC.currentRecipe = recipesHit[indexPath.row].recipe
+    }
+
+    ///network call method for the API
+    fileprivate func getRecipe() {
         recipeServices.getRecipes(with: ingredients) {(result) in
 
             DispatchQueue.main.async {
                 switch result {
 
                 case .success(let recipes):
-                        self.recipesHit = recipes.hits
-                        guard self.recipesHit.count > 0 else { return self.recipeNotFoundAlerte()}
-                        self.recipeTableView.reloadData()
+                    self.recipesHit = recipes.hits
+                    guard self.recipesHit.count > 0 else { return self.recipeNotFoundAlerte()}
+                    self.recipeTableView.reloadData()
 
                 case .failure(let error):
                     if error == .decodeDataError{
@@ -46,14 +60,6 @@ class RecipesViewController: UIViewController {
                 }
             }
         }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let recipesVC = segue.destination as? RecipeDetailViewController else {
-            return
-        }
-        guard let indexPath = recipeTableView.indexPathForSelectedRow else {return}
-        recipesVC.currentRecipe = recipesHit[indexPath.row].recipe
     }
 }
 
@@ -85,7 +91,7 @@ extension RecipesViewController: UITableViewDataSource {
 
 //MARK: - Alerte
 extension RecipesViewController {
-
+    /// alerte if no recipe Found
     private func recipeNotFoundAlerte() {
         let alerte = UIAlertController(title: "No recipes found", message: "please check the ingredient list ", preferredStyle: .alert)
         let alerteAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

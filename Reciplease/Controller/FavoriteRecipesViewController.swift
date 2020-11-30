@@ -28,6 +28,7 @@ class FavoriteRecipesViewController: UIViewController {
         favoriteRecipeTableView.reloadData()
     }
 
+    ///method to retrieve FavoriteRecipe and pass it to currentRecipe into the RecipesDetailViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let recipesVC = segue.destination as? RecipeDetailViewController else {
             return
