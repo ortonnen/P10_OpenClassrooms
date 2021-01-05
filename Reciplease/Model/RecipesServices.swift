@@ -21,8 +21,8 @@ class RecipesServices {
 
     //MARK: - Properties
     private let recipesURL = URL(string: "https://api.edamam.com/search?")!
-    private let apikey = "1ca6fa53868439f0dff48a62bed5b933"
-    private let apiId = "ae5de728"
+    private let apikey = "APIKEY"
+    private let apiId = "APIID"
 
     private let session: AlamoSession
 
