@@ -11,7 +11,9 @@ tabs ("Tab bar").
 ## Research
 
 Here's how the research looks:
-*add photo*
+
+<img width="594" alt="Capture d’écran 2021-06-18 à 10 18 37" src="https://user-images.githubusercontent.com/57671772/122530329-a9b8f800-d01e-11eb-8aa4-db0c136687c2.png">
+
 
 ### The user chooses his ingredients:
 
@@ -48,7 +50,9 @@ favorites.
 
 ## Favorites
 Here's how the favorites look:
-*add Photo*
+
+<img width="525" alt="Capture d’écran 2021-06-18 à 10 18 51" src="https://user-images.githubusercontent.com/57671772/122530367-b0e00600-d01e-11eb-8d11-695dac230af1.png">
+
 
 The interfaces are very similar to the search section. The only ones
 differences are:
